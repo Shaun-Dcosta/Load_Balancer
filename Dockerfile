@@ -1,12 +1,9 @@
-# Use Python base image
+# File: url-shortener/Dockerfile
+
 FROM python:3.9
-
 WORKDIR /app
-
-COPY . /app
-
-RUN pip install flask redis
-
+COPY requirements.txt .
+RUN pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt
+COPY app.py .
 EXPOSE 5000
-
 CMD ["python", "app.py"]

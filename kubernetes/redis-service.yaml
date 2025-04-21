@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-svc # The hostname the application will use to connect to Redis
+spec:
+  selector:
+    app: redis # Selects the pods managed by the 'redis' Deployment
+  ports:
+    - protocol: TCP
+      port: 6379 # Port the service listens on (internal cluster communication)
+      targetPort: 6379 # Port on the Redis pod to forward traffic to
+ 
